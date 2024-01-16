@@ -1,0 +1,59 @@
+
+html{
+    height: 100%;
+}
+
+
+/* Footer */
+
+
+
+
+#logoInFooter
+{
+    padding: 3px;
+    margin-top: 5px;
+    
+}
+
+
+
+
+.btn-akhBule
+{
+  background-color: rgb(27, 78, 156) !important;
+  color:#fff;
+}
+
+.btn-akhBule:hover{
+  color:#fff;
+  background-color: rgb(34, 101, 202) !important;
+}
+
+.btn-akhOrange{
+  background-color: rgb(249, 177, 10) !important;
+  color:black;
+}
+
+.btn-akhOrange:hover{
+  background-color: rgb(252, 189, 41) !important;
+  color:black;
+  transition: box-shadow 0.3s ease;
+  box-shadow: #fff 1px 1px 10px;
+ 
+}
+
+
+
+
+/*loginBox*/
+
+.loginBox
+{
+  border-radius: 10px;
+  margin-top: 10%;
+}
+
+
+
+
