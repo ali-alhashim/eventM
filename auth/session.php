@@ -11,7 +11,7 @@ if(!isset($_SESSION["session"]))
 
 
 
-$sql = "select `id`, `email`, `mobile_number`, `full_name`, `password`, `permission_group`, `permission_group_id`, `profile_photo` from users where email ='".$_POST["email"]."'  LIMIT 1;";
+$sql = "select `id`, `email`,  `name`, `password` from users where email ='".$_POST["email"]."'  LIMIT 1;";
 
 $result = $conn->query($sql);
 
@@ -20,19 +20,17 @@ $row = $result->fetch_array(MYSQLI_ASSOC);
 if ( password_verify( $_POST["password"] , $row["password"]) )
 {
     // 'Password is valid!';
-    $_SESSION["full_name"] = $row["full_name"];
+    $_SESSION["name"] = $row["name"];
     $_SESSION["id"] = $row["id"];
     $_SESSION["email"] = $row["email"];
-    $_SESSION["mobile"] = $row["mobile_number"];
+    
     $_SESSION["session"] = "valid";
-    $_SESSION["permission_group"] = $row["permission_group"];
-    $_SESSION["permission_group_id"] = $row["permission_group_id"];
-    $_SESSION["profile_photo"] = $row["profile_photo"];
+    
 
 
      // add action to log table
 
-     $sql = "insert into `log`( `user_name`,  `email`, `action`) values('".$_SESSION["full_name"]."', '".$_SESSION["email"]."','User Login');";
+     $sql = "insert into `log`( `name`,  `email`, `action`) values('".$_SESSION["name"]."', '".$_SESSION["email"]."','User Login');";
      $conn->query($sql);
 
    // end adding action
@@ -43,7 +41,7 @@ else {
 
        // 'Invalid password.';
       //back to login
-      header("Location: index.php");
+      header("Location: login.php");
 }
 
 }
