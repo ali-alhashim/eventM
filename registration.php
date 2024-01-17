@@ -22,41 +22,41 @@
                 Registration to attend [Electric  event] Start in [Jan-31-2024] End in [Jan-31-2024]
             </h3>
         </div>
-
+         <form method="post" action="">
         <table class="table m-3">
             <thead>
                 <tr>
                     <td>Name</td>
                     <td>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="name">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Mobile</td>
                     <td>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="mobile">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Email</td>
                     <td>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" name="email">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Company</td>
                     <td>
-                        <input type="email" class="form-control">
+                        <input type="text" class="form-control" name="company">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Job Title</td>
                     <td>
-                        <input type="email" class="form-control">
+                        <input type="text" class="form-control" name="jobtitle">
                     </td>
                 </tr>
             </thead>
@@ -68,6 +68,7 @@
        <div class="row justify-content-center">
         <button class="btn btn-akhBule">Register</button>
        </div>
+    </form>
 
     </div>
  
