@@ -4,27 +4,23 @@
 
 $sql = "
 
-create table if not exists `users` (
-
-    `id` int(11) not null auto_increment,
-    `name' varchar(100) default null,
-   
-    `email` varchar(45) default null,
-    `password` varchar(45) default null,
-  
-    `status` varchar(45) default null,
-    `last_modified` timestamp NOT NULL DEFAULT current_timestamp(),
-    primary key (`id),
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100) DEFAULT NULL,
+    `email` VARCHAR(100) DEFAULT NULL,
+    `password` VARCHAR(100) DEFAULT NULL,
+    `status` VARCHAR(100) DEFAULT NULL,
+    `last_modified` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    PRIMARY KEY (`id`),
     UNIQUE KEY `email_UNIQUE` (`email`)
-
-    ) engine=InnoDB default charset=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ";
 
 
 try
 {
- $SQLresult = $conn->exec($sql);
+ $SQLresult = $conn->query($sql);
  echo("<li> <i class='fas fa-check m-2'></i> user table has been created </li>"); 
 }
 catch(PDOException $e)
@@ -34,14 +30,17 @@ catch(PDOException $e)
 }
 
 // insert default admin user with password with roles group admin
+$systemEmail = $_POST["email"];
+$userName    = $_POST["name"];
+$ThePassword = password_hash($_POST["userpassword"], PASSWORD_DEFAULT);
 
 $sql = "
- INSERT INTO `users` (`email`, `password`,  `status`, `name`) VALUES ('ali-alhashim@outlook.com', '','active', 'ali alhashim');
+ INSERT INTO `users` (`email`, `password`,  `status`, `name`) VALUES ('$systemEmail', '$ThePassword','active', '$userName');
  ";
 
  try
  {
-  $SQLresult = $conn->exec($sql);
+  $SQLresult = $conn->query($sql);
   echo("<li> admin user has been added </li>"); 
  }
  catch(PDOException $e)

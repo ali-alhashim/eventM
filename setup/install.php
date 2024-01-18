@@ -63,6 +63,9 @@
          
     <!------------- Create users table ------------>
      <?php require("database/users.php"); ?>
+
+     <!-- Create log Table ---->
+     <?php require("database/log.php"); ?>
       
     
                      
@@ -70,7 +73,7 @@
 
        <!----------------Back Button-------------------->
        <hr>
-       <a class="btn btn-akhBule" href="../index.php">Login</a>
+       <a class="btn btn-akhBule" href="../admin/login.php">Login</a>
        <hr>
      </div>
     </div>

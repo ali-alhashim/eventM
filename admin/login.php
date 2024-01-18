@@ -17,9 +17,25 @@
      <div class=" bg-light  text-center justify-content-center  p-5  loginBox">
          <img src="../static/img/AKH Logo only.svg" width="100" class="m-5"/>
          <h3>Control Panel Login</h3>
+         
+         <?php
+         if (isset($_SESSION['message']))
+         {
+            echo(" 
+            <div class='row bg-danger'>
+            ".$_SESSION['message']."
+            </div>
+            ");
+         }
+          ?>
+         
+        
+
          <form class="group-control p-5" action="dashboard.php" method="post">
-             <input type="email"  class="form-control mb-2 " placeholder="Email"/>
-             <input type="password" class="form-control mb-2 " placeholder="Password"/>
+
+             <input type="email"  class="form-control mb-2 " placeholder="Email" name="email"/>
+             <input type="password" class="form-control mb-2 " placeholder="Password" name="password"/>
+
              <input type="submit" value="Login" class="btn form-control btn-akhBule"/>
          </form>
      </div>

@@ -1,3 +1,4 @@
+<?php require("../auth/session.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

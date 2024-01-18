@@ -15,6 +15,13 @@ $sql = "select `id`, `email`,  `name`, `password` from users where email ='".$_P
 
 $result = $conn->query($sql);
 
+if($result->num_rows <= 0)
+{
+  // no email 
+  $_SESSION["message"] = "Invalid email";
+  header("Location: login.php");
+}
+
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
 if ( password_verify( $_POST["password"] , $row["password"]) )
@@ -29,9 +36,15 @@ if ( password_verify( $_POST["password"] , $row["password"]) )
 
 
      // add action to log table
-
+     try{
      $sql = "insert into `log`( `name`,  `email`, `action`) values('".$_SESSION["name"]."', '".$_SESSION["email"]."','User Login');";
      $conn->query($sql);
+     }
+     catch(PDOException $e)
+     {
+      echo "<p class='bg-warning'>".$e->getMessage()."</p>";
+      echo "<br/>";
+     }
 
    // end adding action
 
@@ -41,6 +54,7 @@ else {
 
        // 'Invalid password.';
       //back to login
+      $_SESSION["message"] = "Invalid password";
       header("Location: login.php");
 }
 
