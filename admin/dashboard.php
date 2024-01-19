@@ -96,7 +96,7 @@
             <tbody>
                 
                 <?php 
-                  $sql = "select * from `event`   order by `id`;";
+                  $sql = "select * from `event`   order by `id` DESC;";
                   $result = $conn->query($sql);
                   while($row = $result->fetch_array(MYSQLI_ASSOC))
                   {
