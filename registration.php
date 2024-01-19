@@ -23,8 +23,20 @@
                 if(isset($_GET["id"]))
                 {
                     require("auth/connection.php");
-                    $sql = "select `id`, `subject`,  `start_date`, `end_date` from event where id ='".$_GET["id"]."'  LIMIT 1;";
-                    $result = $conn->query($sql);
+                   // Sanitize the input
+                    $id = $_GET["id"];
+                    $id = $conn->real_escape_string($id); // Escaping special characters
+                    $id = intval($id); // Converting to integer
+                    
+                    // Prepare the statement
+                    $stmt = $conn->prepare("SELECT `id`, `subject`, `start_date`, `end_date` FROM event WHERE id = ? LIMIT 1;");
+                    $stmt->bind_param("i", $id); // Bind the sanitized value
+                    
+                    // Execute the statement
+                    $stmt->execute();
+                    
+                    // Fetch the result
+                    $result = $stmt->get_result();
                     if($result->num_rows <= 0)
                     {
                         echo("Event Not exist !");
@@ -34,6 +46,10 @@
                         $row = $result->fetch_array(MYSQLI_ASSOC);
                         echo("Registration to attend ".$row["subject"]." Start in ".$row["start_date"]." End in ".$row["end_date"].""); 
                     }
+
+                       // Close the statement and connection
+                        $stmt->close();
+                        $conn->close();
                 }
                 else
                 {
