@@ -12,13 +12,68 @@
 </head>
 <body class="bg-dark" stytle="height: 100vh">
 
+
+<!--Add New Event modal--> 
+<div class="modal fade" id="AddEventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add New Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="row">
+            <div class="col">
+               Event Subject
+            </div>
+            <div class="col">
+               <input type="text" name="eventSubject" class="form-control"/>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col">
+               Start Date
+            </div>
+            <div class="col">
+               <input type="date" name="startDate" class="form-control"/>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col">
+            End Date
+            </div>
+            <div class="col">
+            <input type="date" name="endDate" class="form-control"/>
+            </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
+
     <div class=" d-flex  text-center justify-content-center h-100 align-items-center">
 
   
 
      <div class=" bg-light  text-center justify-content-center  p-5  loginBox w-100 m-5">
         <div class="row">
-          <button class="btn btn-akhBule mx-5 m-2">Add New Event</button>  
+          <button class="btn btn-akhBule mx-5 m-2"  data-toggle="modal" data-target="#AddEventModal">Add New Event</button>  
           <button class="btn btn-akhBule mx-5 m-2">Attend guest with QR code</button> 
           <button class="btn btn-akhBule mx-5 m-2">Address Book</button> 
         </div>
