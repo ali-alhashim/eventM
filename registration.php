@@ -19,7 +19,28 @@
        
         <div class="row justify-content-center">
             <h3>
-                Registration to attend [Electric  event] Start in [Jan-31-2024] End in [Jan-31-2024]
+                <?php 
+                if(isset($_GET["id"]))
+                {
+                    require("auth/connection.php");
+                    $sql = "select `id`, `subject`,  `start_date`, `end_date` from event where id ='".$_GET["id"]."'  LIMIT 1;";
+                    $result = $conn->query($sql);
+                    if($result->num_rows <= 0)
+                    {
+                        echo("Event Not exist !");
+                    }
+                    else
+                    {
+                        $row = $result->fetch_array(MYSQLI_ASSOC);
+                        echo("Registration to attend ".$row["subject"]." Start in ".$row["start_date"]." End in ".$row["end_date"].""); 
+                    }
+                }
+                else
+                {
+                    echo("Registration to attend [-] Start in [-] End in [-]");
+                }
+                
+                ?>
             </h3>
         </div>
          <form method="post" action="">
