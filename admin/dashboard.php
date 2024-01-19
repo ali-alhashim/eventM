@@ -69,10 +69,13 @@
 <!---->
 
     <div class=" d-flex  text-center justify-content-center h-100 align-items-center">
-
+    
   
 
-     <div class=" bg-light  text-center justify-content-center  p-5  loginBox w-100 m-5">
+     <div class=" bg-light  text-center justify-content-center  px-5 py-1  loginBox w-100 m-5">
+     <div class="row my-2">
+      Welcome : <?php echo($_SESSION["name"]); ?>
+     </div>
         <div class="row">
           <button class="btn btn-akhBule mx-5 m-2"  data-toggle="modal" data-target="#AddEventModal">Add New Event</button>  
           <button class="btn btn-akhBule mx-5 m-2">Attend guest with QR code</button> 
