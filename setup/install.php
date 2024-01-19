@@ -66,6 +66,9 @@
 
      <!-- Create log Table ---->
      <?php require("database/log.php"); ?>
+
+       <!-- Create event Table ---->
+       <?php require("database/event.php"); ?>
       
     
                      

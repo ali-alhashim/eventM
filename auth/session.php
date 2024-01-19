@@ -1,7 +1,7 @@
 <?php
 session_start();
 //ob_start();
-
+date_default_timezone_set('Asia/Riyadh');
 require("connection.php");
 
 

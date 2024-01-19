@@ -25,7 +25,7 @@
       </div>
       <div class="modal-body">
 
-
+        <form method="post" action="AddEvent.php">
         <div class="row">
             <div class="col">
                Event Subject
@@ -60,8 +60,9 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Add</button>
+        <input type="submit" class="btn btn-primary" value="Add" />
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -93,16 +94,24 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td><a href="#" class="btn btn-akhOrange">1</a></td>
-                    <td>JAN-16-2024</td>
-                    <td>alhasham</td>
-                    <td>AKH Electrical Event </td>
-                    <td>JAN-31-2024 </td>
-                    <td>JAN-31-2024 </td>
-                    <td>70</td>
-                    <td>65</td>
-                </tr>
+                
+                <?php 
+                  $sql = "select * from `event`   order by `id`;";
+                  $result = $conn->query($sql);
+                  while($row = $result->fetch_array(MYSQLI_ASSOC))
+                  {
+                    echo("<tr>");
+                    echo("<td><a href='#' class='btn btn-akhOrange'>".$row["id"]."</a></td>");
+                    echo("<td>".$row["created_date"]."</td>");
+                    echo("<td>".$row["created_by"]."</td>");
+                    echo("<td>".$row["subject"]."</td>");
+                    echo("<td>".$row["start_date"]."</td>");
+                    echo("<td>".$row["end_date"]."</td>");
+                    echo("<td>".$row["total_registered"]."</td>");
+                    echo("<td>".$row["total_attended"]."</td>");
+                    echo("</tr>");
+                  }
+                ?>
             </tbody>
        </table>
 
