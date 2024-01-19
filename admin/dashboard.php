@@ -42,7 +42,7 @@
                Start Date
             </div>
             <div class="col">
-               <input type="date" name="startDate" class="form-control"/>
+               <input type="date" name="startDate" class="form-control"/><input type="time" name="startTime" class="form-control"/>
             </div>
         </div>
 
@@ -53,7 +53,27 @@
             End Date
             </div>
             <div class="col">
-            <input type="date" name="endDate" class="form-control"/>
+            <input type="date" name="endDate" class="form-control"/><input type="time" name="endTime" class="form-control"/>
+            </div>
+        </div>
+
+         <hr>
+        <div class="row">
+            <div class="col">
+            Location
+            </div>
+            <div class="col">
+            <input type="text" name="location" class="form-control"/>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col">
+            Message
+            </div>
+            <div class="col">
+            <textarea name="message" class="form-control"></textarea>
             </div>
         </div>
 
