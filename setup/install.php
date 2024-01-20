@@ -69,6 +69,9 @@
 
        <!-- Create event Table ---->
        <?php require("database/event.php"); ?>
+
+        <!-- Create address_book Table ---->
+        <?php require("database/address_book.php"); ?>
       
     
                      

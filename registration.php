@@ -29,7 +29,7 @@
                     $id = intval($id); // Converting to integer
                     
                     // Prepare the statement
-                    $stmt = $conn->prepare("SELECT `id`, `subject`, `start_date`, `end_date` FROM event WHERE id = ? LIMIT 1;");
+                    $stmt = $conn->prepare("SELECT `id`, `subject`, `start_date`,`start_time`, `end_date`,`end_time` FROM event WHERE id = ? LIMIT 1;");
                     $stmt->bind_param("i", $id); // Bind the sanitized value
                     
                     // Execute the statement
@@ -44,7 +44,7 @@
                     else
                     {
                         $row = $result->fetch_array(MYSQLI_ASSOC);
-                        echo("Registration to attend ".$row["subject"]." Start in ".$row["start_date"]." End in ".$row["end_date"].""); 
+                        echo("Registration to attend ".$row["subject"]." Start in ".$row["start_date"]."<sup>".$row["start_time"]."</sup>"." End in ".$row["end_date"]."<sup>".$row["end_time"]."</sup>"); 
                     }
 
                        // Close the statement and connection
