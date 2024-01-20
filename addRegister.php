@@ -17,7 +17,7 @@ $currentDate  = date('Y-m-d H:i:s');
 require("auth/connection.php");
 $id = $conn->real_escape_string($eventId); // Escaping special characters
 $id = intval($eventId); // Converting to integer
-$stmt = $conn->prepare("SELECT `id`, `subject`, `start_date`,`start_time`, `end_date`,`end_time` FROM `event` WHERE id = ? LIMIT 1;");
+$stmt = $conn->prepare("SELECT `id`, `subject`, `start_date`,`start_time`, `end_date`,`end_time`, `total_registered` FROM `event` WHERE id = ? LIMIT 1;");
 $stmt->bind_param("i", $id); // Bind the sanitized value            
 // Execute the statement
 $stmt->execute();
@@ -31,7 +31,7 @@ else
 {
     // check if the event expired or there is not time left !
     // check if new contact exist if not add to our address book
-    $sql = $conn->prepare("SELECT `email` FROM `address_book` WHERE email = ? LIMIT 1;");
+    $sql = $conn->prepare("SELECT `email`, `id` FROM `address_book` WHERE email = ? LIMIT 1;");
     $sql->bind_param("s",$email );
     $sql->execute();
     $result2 = $sql->get_result();
@@ -43,10 +43,12 @@ else
             try
                 {
                 $SQLresult = $conn->query($sql);
-                $sql = "SELECT `email` FROM `address_book` WHERE email = ? LIMIT 1;";
-                $sql->bind_param("s",$email );
-                $sql->execute();
-                $result3 = $sql->get_result();
+
+                $sql = "SELECT `email`, `id` FROM `address_book` WHERE email = ? LIMIT 1;";
+                $stmt = $conn->prepare($sql); // Prepare the statement
+                $stmt->bind_param("s", $email); // Bind the parameter
+                $stmt->execute(); // Execute the statement
+                $result3 = $stmt->get_result(); // Get the result
                 $row = $result3->fetch_array(MYSQLI_ASSOC);
                 $ContactId = $row["id"];
                 }
@@ -70,8 +72,11 @@ else
     $SQLresult = $conn->query($sql);
     // add record in table = attendance but check also if already registred ! 
 
-    $sql = "SELECT `contact_id`, `event_id` FROM `attendance` where `event_id`=$id  AND contact_id=$ContactId LIMIT 1;";
-    $result = $conn->query($sql);
+    $sql = "SELECT `contact_id`, `event_id` FROM `attendance` WHERE `event_id` = ? AND `contact_id` = ? LIMIT 1;";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $id, $ContactId);
+    $stmt->execute();
+    $result = $stmt->get_result();
     if($result->num_rows <= 0)
     {
        // this first time add him to attendance table

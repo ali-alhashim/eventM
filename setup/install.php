@@ -72,6 +72,9 @@
 
         <!-- Create address_book Table ---->
         <?php require("database/address_book.php"); ?>
+
+          <!-- Create attendance Table ---->
+          <?php require("database/attendance.php"); ?>
       
     
                      
