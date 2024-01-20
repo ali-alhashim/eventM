@@ -59,7 +59,7 @@
                 ?>
             </h3>
         </div>
-         <form method="post" action="">
+        <form method="post" action="addRegister.php">
         <table class="table m-3">
             <thead>
                 <tr>
@@ -105,6 +105,13 @@
        <div class="row justify-content-center">
         <button class="btn btn-akhBule">Register</button>
        </div>
+
+       <?php
+       if(isset($_GET["id"]))
+       {
+       echo("<input type='hidden' name='eventId' value='$id'>");
+       }
+       ?>
     </form>
 
     </div>
