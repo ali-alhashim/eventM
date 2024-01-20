@@ -102,6 +102,12 @@
           <button class="btn btn-akhBule mx-5 m-2"  data-toggle="modal" data-target="#AddContactModal">Add New Contact</button>  
          
           <a class="btn btn-akhBule mx-5 m-2" href="dashboard.php">Dashboard</a> 
+          <form method="GET">
+          
+            <input type="text" placeholder="Search....." name="Search" />
+            <input type="submit" value="search" class="btn btn-akhBule  my-2"/>
+
+          </form>
         </div>
 
         <table class="table m-3">
