@@ -92,6 +92,7 @@ else
        //send email for confirmation of registration with QR code
        require("email/email.php");
        sendEmail("ali-alhashim@outlook.com", "invitation from akh", "here is message body");
+       
     }
     else
     {
