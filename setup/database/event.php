@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `event` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `subject` VARCHAR(100) DEFAULT NULL,
     `location` VARCHAR(100) DEFAULT NULL,
-    `message` VARCHAR(500) DEFAULT NULL,
+    `message` VARCHAR(7000) DEFAULT NULL,
     `created_by` VARCHAR(100) DEFAULT NULL,
     `start_date` DATE DEFAULT NULL,
     `start_time` TIME DEFAULT NULL,

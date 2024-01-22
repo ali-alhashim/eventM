@@ -80,12 +80,27 @@ else
     if($result->num_rows <= 0)
     {
        // this first time add him to attendance table
+       
+       // Generate a random code
+       $length = 6; // Length of the random code
+       $randomCode =  substr(uniqid(), -($length ));
+
+       $sql = "INSERT INTO `attendance` (`contact_id`, `event_id`, `created_date`, `code`) VALUES(?, ?, '$currentDate','$randomCode');";
+       $stmt = $conn->prepare($sql);
+       $stmt->bind_param("ii", $id, $ContactId);
+       $stmt->execute();
+       //send email for confirmation of registration with QR code
+       require("email/email.php");
+       sendEmail("ali-alhashim@outlook.com", "invitation from akh", "here is message body");
     }
     else
     {
        // he already registred !
+       //send email for confirmation of registration with QR code
+       require("email/email.php");
+       sendEmail("ali-alhashim@outlook.com", "invitation from akh", "here is message body");
     }
      
-    //send email for confirmation of registration with QR code 
+     
 }
 ?>

@@ -3,6 +3,7 @@ $sql = "
 
 CREATE TABLE IF NOT EXISTS `attendance` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `code` VARCHAR(100) DEFAULT NULL,
     `contact_id` INT(11) DEFAULT NULL,
     `event_id` INT(11) DEFAULT NULL,
     `created_date` DATETIME(6) DEFAULT NULL,
