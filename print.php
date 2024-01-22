@@ -241,7 +241,7 @@ width: 100%;
 }
     </style>
 
-<script src="static/js/QrCode.js" type="application/javascript"></script>
+<script src="static/js/qrcode.min.js" type="application/javascript"></script>
 
 </head>
 <body class="print-body">
@@ -257,6 +257,7 @@ width: 100%;
 <div class="emp-photo">
 
 Code # : <?=$row["code"]?>
+<input type="hidden" value="<?=$row["code"]?>" id="codeId" name="codeId" />
 </div>
 
 
@@ -306,18 +307,17 @@ Code # : <?=$row["code"]?>
 
 
 <script type="text/javascript">
-         var qrcode = new QRCode("qrcode",{
-            width:  130,
-            height: 130,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.L
-            
-        });
-        
-        
-                   
-        qrcode.makeCode("<? $row["code"] ?>");
+         
+
+         var qrcode = new QRCode("qrcode", {
+    text: "http://jindo.dev.naver.com/collie",
+    width: 128,
+    height: 128,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});           
+        qrcode.makeCode(document.getElementById("codeId").value);
 </script>
 
 
